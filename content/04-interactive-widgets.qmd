@@ -1,0 +1,37 @@
+# Interactive Content with Widgets
+
+We use R packages like `plotly` and `leaflet` to create interactive content.
+
+## Plotly Graph
+
+```{r}
+#| echo: true
+#| label: fig-plotly-graph
+#| fig-cap: "Scatter plot of bill length vs. bill depth in penguins."
+
+
+library(plotly)
+library(palmerpenguins)
+data(penguins, package = "palmerpenguins")
+
+plot_ly(data = penguins, x = ~bill_length_mm, y = ~bill_depth_mm, type = 'scatter', mode = 'markers')
+```
+
+@fig-plotly-graph shows a scatter plot of bill length vs. bill depth in penguins. You can hover over the points to see the data values. It is created using the `plotly` package.
+
+## Leaflet Map
+
+```{r}
+#| label: fig-leaflet-map
+#| fig-cap: "Map showing a sample location. Note: Interactive features do not display in PDF."
+
+
+library(leaflet)
+
+# Placeholder data; replace with actual geographic data if available
+leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(lng = 174.768, lat = -36.852, popup = "Auckland")
+```
+
+@fig-leaflet-map shows a sample map with a marker at Auckland, New Zealand. It is created using the `leaflet` package. Note that interactive features do not display in PDF.

@@ -1,0 +1,9 @@
+# Appendix
+
+\settocdepth{chapter}
+
+Using the command `\settocdepth{chapter}` in the document, the table of contents will only show chapters. This command carries to the following documents.
+
+## Appendix A: Theoretical Background
+
+## Appendix B: Experimental Details

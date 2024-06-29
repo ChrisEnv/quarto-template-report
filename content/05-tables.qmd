@@ -1,0 +1,65 @@
+# Tables in Various Formats
+
+We will create tables using Markdown, coded tibbles, and `gt` tables using the Palmer Penguins data.
+
+## Markdown Table
+
+| Species     | Island        | Bill Length (mm) |
+|-------------|---------------|------------------|
+| Adelie      | Torgersen     | 39.1             |
+| Chinstrap   | Dream         | 46.5             |
+| Gentoo      | Biscoe        | 50.0             |
+
+: Penguin species and their bill lengths recorded on different islands. {#tbl-markdown-table}
+
+## Coded Tables with gt
+
+```{r}
+#| label: tbl-tibble
+#| tbl-cap: "Table showing the first few entries of penguin species data."
+
+library(tibble)
+library(palmerpenguins)
+library(tidyverse)
+library(gt)
+
+penguins %>% 
+  select(species, island, bill_length_mm) %>%
+  head() %>%
+  gt()
+```
+
+## GT Tables (interactive)
+
+```{r}
+#| label: tbl-gt
+#| tbl-cap: "A selection of measurements from the Palmer Penguins dataset."
+
+library(gt)
+library(palmerpenguins)
+
+# interactive gt table
+
+penguins %>% 
+  select(species, island, bill_length_mm, bill_depth_mm) %>%
+  head() %>%
+  gt() %>%
+  opt_interactive()
+```
+
+## really long tables
+
+```{r}
+#| label: tbl-long
+#| tbl-cap: "A long table with many columns."
+
+# interactive gt table
+
+penguins %>% 
+  select(species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g) %>%
+  gt() %>%
+  tab_spanner(label = "Penguin Measurements", columns = c(species, island)) %>%
+  tab_spanner(label = "Bill Measurements", columns = c(bill_length_mm, bill_depth_mm)) %>%
+  tab_spanner(label = "Body Measurements", columns = c(flipper_length_mm, body_mass_g))
+
+```

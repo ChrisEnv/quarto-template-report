@@ -1,0 +1,207 @@
+%% CAPTIONS
+\usepackage{caption}
+\DeclareCaptionStyle{italic}[justification=centering]
+ {labelfont={bf},textfont={it},labelsep=colon}
+\captionsetup[figure]{style=italic,format=hang,singlelinecheck=true}
+\captionsetup[table]{style=italic,format=hang,singlelinecheck=true}
+
+%% FONT
+\usepackage[scale=0.95]{carlito}
+\renewcommand*\familydefault{\sfdefault}
+
+%% HEADERS AND FOOTERS
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+
+% Footer configuration
+
+\fancyfoot[L]{$if(docnum)$ $docnum$ $endif$} % Path to the document on the left side of the footer
+\fancyfoot[C]{$if(revnum)$ Rev. $revnum$ $endif$} % Revision number on the center side of the footer
+\fancyfoot[R]{\thepage} % Page number on the right side of the footer
+
+\renewcommand{\footrulewidth}{0.4pt} % Small line above the footer
+
+% Header configuration on normal pages
+
+% Assuming direct access to variables, adjust as per your actual variable passing mechanism
+
+\fancyhead[L]{%
+  $if(companylogo)$
+    \raisebox{$companylogo_offset$}{%
+      \includegraphics[height=$companylogo_height$,keepaspectratio]{$companylogo$}%
+    }%
+  $endif$
+}
+\fancyhead[R]{%
+  $if(customerlogo)$
+    \raisebox{$customerlogo_offset$}{%
+      \includegraphics[height=$customerlogo_height$,keepaspectratio]{$customerlogo$}%
+    }%
+  $endif$
+}
+
+% Center header with the title
+\fancyhead[C]{$title$}  % Replace with your document title
+
+\renewcommand{\headrulewidth}{0.4pt} % Small line below the header
+
+% Apply the fancy style to chapter opening pages as well
+\makeatletter
+\let\ps@plain\ps@fancy
+\makeatother
+
+% Adjusting the plain style to also have the small line and configurations
+\fancypagestyle{plain}{%
+
+  \fancyhf{} % clear all header and footer fields for the plain style
+  
+  \fancyfoot[L]{$if(docnum)$ $docnum$ $endif$} % Path to the document on the left side of the footer
+  \fancyfoot[C]{$if(revnum)$ Rev. $revnum$ $endif$} % Revision number on the center side of the footer
+  \fancyfoot[R]{\thepage} % Page number on the right side of the footer
+  
+  \fancyhead[L]{%
+    $if(companylogo)$
+      \raisebox{$companylogo_offset$}{%
+        \includegraphics[height=$companylogo_height$,keepaspectratio]{$companylogo$}%
+      }%
+    $endif$
+  }
+  \fancyhead[R]{%
+    $if(customerlogo)$
+      \raisebox{$customerlogo_offset$}{%
+        \includegraphics[height=$customerlogo_height$,keepaspectratio]{$customerlogo$}%
+      }%
+    $endif$
+  }
+  
+  % Center header with the title
+  \fancyhead[C]{$title$}  % Replace with your document title
+  
+  \renewcommand{\headrulewidth}{0.4pt} % Small line below the header in plain style
+  \renewcommand{\footrulewidth}{0.4pt} % Small line above the footer in plain style
+  
+}
+
+%% MATHS
+\usepackage{bm,amsmath}
+\allowdisplaybreaks
+
+%% GRAPHICS
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.8}
+
+%% TITLES
+
+\usepackage{titlesec}
+% Customizing chapter title format
+\titleformat{\chapter}[hang]{\normalfont\Large\bfseries}{\thechapter.}{1em}{}
+\titlespacing*{\chapter}{0pt}{*-1.5}{*1.5}
+% Customizing section title format
+\titleformat{\section}[hang]{\normalfont\large\bfseries}{\thesection}{1em}{}
+% Customizing subsection title format
+\titleformat{\subsection}[hang]{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+% customizing subsubsection title format
+\titleformat{\subsubsection}[hang]{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+% Customizing subsubsubsection title format (paragraph)
+\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+
+%% WRAP TEXT
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+
+%% TOC Styling
+
+\usepackage{tocloft}
+
+% No indentation and no dots for TOC entries
+\renewcommand{\cftdot}{}
+\setlength{\cftchapindent}{0pt}
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsubsecindent}{0pt}
+
+% Adjust the title format for TOC to match chapters, with 1.5 spacing before and after
+\renewcommand{\cfttoctitlefont}{\Large\bfseries}
+\renewcommand{\cftbeforetoctitleskip}{-1em} % Adjust space before the title if needed
+\renewcommand{\cftaftertoctitle}{\par\addvspace{0.5\baselineskip}} % Space after the title
+
+% Adjust the title format for LOF to match chapters, with 1.5 spacing before and after
+\renewcommand{\cftloftitlefont}{\Large\bfseries}
+\renewcommand{\cftbeforeloftitleskip}{-1em} % Adjust space before the title if needed
+\renewcommand{\cftafterloftitle}{\par\addvspace{0.5\baselineskip}} % Space after the title
+
+% Adjust the title format for LOT to match chapters, with 1.5 spacing before and after
+\renewcommand{\cftlottitlefont}{\Large\bfseries}
+\renewcommand{\cftbeforelottitleskip}{-1em} % Adjust space before the title if needed
+\renewcommand{\cftafterlottitle}{\par\addvspace{0.5\baselineskip}} % Space after the title
+
+%% BIBLIOGRAPHY
+
+\makeatletter
+\@ifpackageloaded{biblatex}{
+\ExecuteBibliographyOptions{bibencoding=utf8,minnames=1,maxnames=3, maxbibnames=99,dashed=false,terseinits=true,giveninits=true,uniquename=false,uniquelist=false,doi=false, isbn=false,url=true,sortcites=false}
+\DeclareFieldFormat{url}{\texttt{\url{#1}}}
+\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[inproceedings]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[incollection]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+\DeclareFieldFormat[article]{title}{\MakeCapital{#1}}
+\DeclareFieldFormat[article]{url}{}
+\DeclareFieldFormat[inproceedings]{title}{#1}
+\DeclareFieldFormat{shorthandwidth}{#1}
+\usepackage{xpatch}
+\xpatchbibmacro{volume+number+eid}{\setunit*{\adddot}}{}{}{}
+% Remove In: for an article.
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{%
+  \printtext{\bibstring{in}\intitlepunct}}}
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryCitekey{\clearfield{month}}
+\DeclareDelimFormat[cbx@textcite]{nameyeardelim}{\addspace}
+\renewcommand*{\finalnamedelim}{\addspace\&\space}
+}{}
+\makeatother
+
+%% MISC PACKAGES
+
+\usepackage{lscape} % For landscape pages
+
+%% colors
+
+\usepackage{xcolor}
+\definecolor{blue}{HTML}{0874bc}
+\definecolor{blue70}{HTML}{b5d5eb} % 70% white added
+\definecolor{blue90}{HTML}{e6f1f8} % 90% white added
+
+\usepackage{tcolorbox}
+
+% Define a custom tcolorbox style
+\tcbset{
+    myquote/.style={
+        colback=blue90, % Background color
+        colframe=blue, % Border color
+        fonttitle=\bfseries,
+        coltitle=black,
+        sharp corners,
+        boxrule=0.5mm,
+        width=\textwidth,
+        top=2mm,
+        bottom=2mm,
+        left=2mm,
+        right=2mm
+    }
+}
+
+% TOC Depth
+\usepackage{tocvsec2}

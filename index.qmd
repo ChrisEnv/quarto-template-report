@@ -1,0 +1,53 @@
+# Quotations
+
+There are several ways to include quotations in your document. 
+
+## callout blocks
+
+### default
+
+::: {.callout-note icon=false}
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+### custom
+
+By using the fenced-div syntax, quotes can be easily embedded in the text. This allows rendering to HTML and PDF with the same syntax. The following examples show the various possibilities.
+
+#### without title
+
+````markdown
+::: {.my-callout}
+By using the fenced-div syntax, quotes can be easily embedded in the text. This allows rendering to HTML and PDF with the same syntax. The following examples show the various possibilities.
+````
+::: {.my-callout}
+By using the fenced-div syntax, quotes can be easily embedded in the text. This allows rendering to HTML and PDF with the same syntax. The following examples show the various possibilities.
+:::
+
+#### with title
+
+````markdown
+::: {.my-callout title="Custom Title"}
+By using the fenced-div syntax, quotes can be easily embedded in the text. This allows rendering to HTML and PDF with the same syntax. The following examples show the various possibilities.
+:::
+````
+
+::: {.my-callout title="Custom Title"}
+By using the fenced-div syntax, quotes can be easily embedded in the text. This allows rendering to HTML and PDF with the same syntax. The following examples show the various possibilities.
+:::
+
+## colorbox
+
+Using the latex package tcolorbox, you can include quotations in a colored box. This only works in PDF renders so far and isnt included in the HTML.
+
+\begin{tcolorbox}[myquote]
+    "The only limit to our realization of tomorrow is our doubts of today."
+    \begin{flushright}
+    - Franklin D. Roosevelt
+    \end{flushright}
+\end{tcolorbox}
+
+# Abbreviations
+
+A {{< acr CPU >}} is the brain of a computer. The {{< acr CPU >}} is responsible for executing a sequence of stored instructions called a program.

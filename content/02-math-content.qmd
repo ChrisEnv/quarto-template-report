@@ -1,0 +1,9 @@
+# Mathematical Content and Formulas
+
+This section includes an inline formula: $e^{i\pi} + 1 = 0$ which demonstrates an important identity in mathematics.
+
+**Displayed formula**:
+
+$$
+e^{i\pi} + 1 = 0
+$$

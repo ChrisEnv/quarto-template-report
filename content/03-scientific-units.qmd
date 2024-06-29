@@ -1,0 +1,7 @@
+# Scientific Units and Special Characters
+
+This chapter demonstrates the use of scientific units and special characters:
+
+- Water boils at 100 °C.
+- The symbol for micro is µ.
+- The German letter ß is used in "straße," meaning street.

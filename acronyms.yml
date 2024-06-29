@@ -1,0 +1,28 @@
+---
+acronyms:
+  keys:
+    - shortname: CPU
+      longname: Central Processing Unit
+    - shortname: RAM
+      longname: Random Access Memory
+    - shortname: SSD
+      longname: Solid State Drive
+    - shortname: LAN
+      longname: Local Area Network
+    - shortname: HTTP
+      longname: Hypertext Transfer Protocol
+    - shortname: VPN
+      longname: Virtual Private Network
+    - shortname: DNS
+      longname: Domain Name System
+    - shortname: IoT
+      longname: Internet of Things
+    - shortname: AI
+      longname: Artificial Intelligence
+    - shortname: API
+      longname: Application Programming Interface
+    - shortname: URL
+      longname: Uniform Resource Locator
+    - shortname: SQL
+      longname: Structured Query Language
+---

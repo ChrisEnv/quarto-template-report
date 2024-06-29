@@ -1,0 +1,61 @@
+title: template report
+author: Christian Stankov
+version: 2.0.0
+quarto-required: ">= 1.4.0"
+contributes:
+  formats:
+    html: 
+      theme: [cosmo, styles.scss]
+    pdf:
+      documentclass: scrbook
+      watermarktext: TEST
+      classoption: openany
+      companylogo: "media/company_logo.png"
+      companylogo_height: "0.5cm"  # Default height
+      companylogo_offset: "-0.1cm"  # Vertical offset from default position
+      customerlogo: "media/customer_logo.png"
+      customerlogo_height: "0.5cm"  # Default height
+      customerlogo_offset: "-0.1cm"  # Vertical offset from default position
+      papersize: a4
+      fontsize: 11pt
+      date: today
+      date-format: "D MMMM YYYY"
+      toc: true
+      lof: true
+      lot: true
+      lang: eng
+      pdf-engine: xelatex
+      geometry:
+      - top=2.5cm
+      - bottom=2.5cm
+      - left=2.5cm
+      - right=2.5cm
+      block-headings: false
+      cite-method: biblatex
+      biblio-style: authoryear-comp
+      colorlinks: true
+      fig.height: 2
+      fig.width: 3
+      number-sections: true
+      number-depth: 3
+      knitr:
+        opts_chunk:
+          echo: false
+          warning: false
+          message: false
+          fig.width: 3
+          fig.height: 2
+          fig.pos: h
+      include-in-header:
+        - text: |
+            \usepackage{orcidlink}
+            \definecolor{mypink}{RGB}{219, 48, 122}
+      template-partials:
+        - "before-title.tex"
+        - "before-body.tex"
+        - "title.tex"
+        - "toc.tex"
+        - "tables.tex"
+
+      filters:
+        - callout.lua

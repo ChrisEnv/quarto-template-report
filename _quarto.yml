@@ -1,0 +1,66 @@
+# project settings
+
+project:
+  type: book
+  output-dir: output
+  execute-dir: file
+  preview:
+    port: 4200
+  
+# book settings
+
+book:
+  title: "my report"
+  subtitle: "subtitle"
+  author: "author"
+  date: today
+  chapters:
+    - index.qmd
+    - content/01-basic-text.qmd
+    - content/02-math-content.qmd
+    - content/03-scientific-units.qmd
+    - content/04-interactive-widgets.qmd
+    - content/05-tables.qmd
+    - content/glossary.qmd
+  appendices:
+    - appendix/appendix.qmd
+    
+# global settings
+
+keep-tex: false
+keep-md: false
+
+revnum: 0
+docnum: "doc-id"
+    
+# template settings
+
+branding: yes
+linestretch: 1.3
+format: 
+  report-pdf: default
+  report-html: default
+    
+# filter
+
+filters:
+  - watermark
+  - acronyms
+
+# filter settings
+
+watermark:
+  text: "INTERNAL USE ONLY"
+  opacity: 0.1
+  
+  
+# glossary
+
+acronyms:
+  loa_title: ""
+  include_unused: true
+  insert_links: false
+  insert_loa: false
+  fromfile: acronyms.yml
+  loa_header_classes:
+    - unnumbered

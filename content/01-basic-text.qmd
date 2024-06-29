@@ -1,0 +1,11 @@
+# Introduction
+
+Welcome to our Quarto book project. This chapter focuses on basic text formatting, including headings, subheadings, and paragraphs.
+
+## Subheading Example
+
+Here's a look at simple text formatting in a Quarto document. This includes:
+
+- **Bold text** for emphasis
+- *Italicized text* for titles or key terms
+- `Inline code` for highlighting code snippets within text
