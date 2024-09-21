@@ -4,7 +4,7 @@
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 
-% definiere Funktion: positioniert ein Bild an einer bestimmten Stelle. argumente: x-pos, y-pos, optionen, pfad zum bild
+% define a function to place a figure at a specific position
 \def\placefig#1#2#3#4#5{
   \begin{textblock}{#3}(#1,#2)
     \rlap{\includegraphics[#4]{#5}}
@@ -30,13 +30,13 @@ $endif$
         
         \vspace*{4.5cm}
         
-        % Hier werden Titel linksbündig und Untertitel mittig mit vertikalem Abstand platziert
+        % Place the title
         \begin{textblock}{14}(3,8.5) % Position und Breite nach Bedarf ändern
           \noindent
           \textsf{\textbf{\color[HTML]{0874bc}\fontsize{20pt}{28pt}\selectfont\expandafter{$title$}}}
         \end{textblock}
 
-        % Vertikaler Abstand
+        % Place the subtitle
         \vspace*{3cm}
 
         \begin{center}
@@ -45,15 +45,15 @@ $endif$
         \end{center}
         
         
-        % Hier wird das Viereck neben dem titel platziert
-        \begin{textblock}{4}(0,8) % Platzierung am linken Seitenrand
+        % Place the author, date, revision number and document number
+        \begin{textblock}{4}(0,8) % 
           \begingroup
           \color[HTML]{c36cc0}
           \rule{2cm}{1cm}
           \endgroup
         \end{textblock}
         
-        % Hier wird das blaue Viereck unten auf der titelseite platziert
+        % placement of colored bar
         \begin{textblock}{24}(0,25)
           \begingroup
           \color[HTML]{0874bc}
@@ -61,7 +61,7 @@ $endif$
           \endgroup
         \end{textblock}
         
-        \begin{textblock}{14}(3,26) % Position und Breite nach Bedarf ändern
+        \begin{textblock}{14}(3,26) % adjust position as needed
           \noindent
           \textsf{\color[HTML]{ffffff}\fontsize{12pt}{28pt}\selectfont\expandafter{$author$}}\par
           \textsf{\color[HTML]{ffffff}\fontsize{12pt}{28pt}\selectfont\expandafter{$date$}}\par
