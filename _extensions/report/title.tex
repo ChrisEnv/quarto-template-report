@@ -1,87 +1,80 @@
-% Placement of logos
+% load the title page
 
 \RequirePackage[absolute,overlay]{textpos}
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
-\def\placefig#1#2#3#4{\begin{textblock}{.1}(#1,#2)\rlap{\includegraphics[#3]{#4}}\end{textblock}}
+
+% definiere Funktion: positioniert ein Bild an einer bestimmten Stelle. argumente: x-pos, y-pos, optionen, pfad zum bild
+\def\placefig#1#2#3#4#5{
+  \begin{textblock}{#3}(#1,#2)
+    \rlap{\includegraphics[#4]{#5}}
+  \end{textblock}}
 
 % Title and date
-
 $if(title)$
 \title{$title$}
 $endif$
 $if(subtitle)$
-\usepackage{etoolbox}
-\makeatletter
-\providecommand{\subtitle}[1]{% add subtitle to \maketitle
-  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
-}
-\makeatother
 \subtitle{$subtitle$}
 $endif$
 \date{$date$}
 
-\def\Date{\number\day}
-\def\Month{\ifcase\month\or
- January\or February\or March\or April\or May\or June\or
- July\or August\or September\or October\or November\or December\fi}
-\def\Year{\number\year}
-
-% Working paper number and JEL codes
-
-\makeatletter
-\def\wp#1{\gdef\@wp{#1}}\def\@wp{??/??}
-\def\jel#1{\gdef\@jel{#1}}\def\@jel{??}
-\def\showjel{{\large\textsf{\textbf{JEL classification:}}~\@jel}}
-\def\nojel{\def\showjel{}}
-\makeatother
-
-$if(wpnumber)$
-\wp{$wpnumber$}
-$endif$
-$if(jelcodes)$
-\jel{$jelcodes$}
-$else$
-\nojel
-$endif$
-
 % Title page
-
 \makeatletter
 \def\cover{{\sffamily\setcounter{page}{0}
+
         \thispagestyle{empty}
-        \placefig{13}{1.5}{width=5cm}{$companylogo$}
-        \vspace*{4.5cm}
-        \begin{center}
-        \parbox{14cm}{\begin{onehalfspace}\centering\Huge\vspace*{0.3cm}
-                \textsf{\textbf{\expandafter{\@title}}}\vspace{1cm}\par
-                \LARGE
-                \expandafter{$subtitle$}
-                \expandafter{\@author}
-                \end{onehalfspace}
-        }
-        \end{center}}}
         
-%         \def\addresses#1{\gdef\@addresses{#1}}\def\@addresses{??}
-        \def\pageone{{\sffamily\setstretch{1}%
-       \thispagestyle{empty}%
-        \vbox to \textheight{%
-        \raggedright\baselineskip=1.2cm
-     {\fontsize{24.88}{30}\sffamily\textbf{\expandafter{\@title}}}
-        \vspace{2cm}\par
-        % \hspace{1cm}\parbox{14cm}{\sffamily\large\@addresses}\vspace{1cm}\vfill
-        % \hspace{1cm}{\large\Date~\Month~\Year}\\[1cm]
-        % \hspace{1cm}\showjel\vss
-        }}}
- \def\blindtitle{{\sffamily
-      \thispagestyle{plain}\raggedright\baselineskip=1.2cm
-      {\fontsize{24.88}{30}\sffamily\textbf{\expandafter{\@title}}}\vspace{1cm}\par
-         }}
+        % Place company logo at the top right
+        \placefig{14}{1.5}{5}{height=20cm,keepaspectratio}{$companylogo$}
+        
+        \vspace*{4.5cm}
+        
+        % Hier werden Titel linksbündig und Untertitel mittig mit vertikalem Abstand platziert
+        \begin{textblock}{14}(3,8.5) % Position und Breite nach Bedarf ändern
+          \noindent
+          \textsf{\textbf{\color[HTML]{0874bc}\fontsize{20pt}{28pt}\selectfont\expandafter{$title$}}}
+        \end{textblock}
+
+        % Vertikaler Abstand
+        \vspace*{3cm}
+
+        \begin{center}
+          \textsf{\color[HTML]{0874bc}\fontsize{16pt}{22pt}\selectfont\expandafter{$subtitle$}}
+          \vspace*{4.5cm}
+        \end{center}
+        
+        
+        % Hier wird das Viereck neben dem titel platziert
+        \begin{textblock}{4}(0,8) % Platzierung am linken Seitenrand
+          \begingroup
+          \color[HTML]{c36cc0}
+          \rule{2cm}{1cm}
+          \endgroup
+        \end{textblock}
+        
+        % Hier wird das blaue Viereck unten auf der titelseite platziert
+        \begin{textblock}{24}(0,25)
+          \begingroup
+          \color[HTML]{0874bc}
+          \rule{24cm}{5cm}
+          \endgroup
+        \end{textblock}
+        
+        \begin{textblock}{14}(3,26) % Position und Breite nach Bedarf ändern
+          \noindent
+          \textsf{\color[HTML]{ffffff}\fontsize{12pt}{28pt}\selectfont\expandafter{$author$}}\par
+          \textsf{\color[HTML]{ffffff}\fontsize{12pt}{28pt}\selectfont\expandafter{$date$}}\par
+          \textsf{\color[HTML]{ffffff}\fontsize{12pt}{28pt}\selectfont\expandafter{$if(revnum)$Rev. $revnum$ $endif$}}\par
+          % add docnum
+          \textsf{\color[HTML]{ffffff}\fontsize{12pt}{28pt}\selectfont\expandafter{$if(docnum)$$docnum$ $endif$}}
+        \end{textblock}
+        }
+        }
+         
  \def\titlepage{{\cover\newpage}}
  
- \def\blind{\def\titlepage{{\blindtitle}}\let\maketitle\blindtitle}
- \def\titlepageonly{\def\titlepage{{\pageone\end{document}}}}
- \def\nocover{\def\titlepage{{\pageone\newpage\blindtitle}}\let\maketitle\titlepage}
+ % defines maketitle function which is called in before-body.tex to implement the title page
  \let\maketitle\titlepage
 
 \makeatother
